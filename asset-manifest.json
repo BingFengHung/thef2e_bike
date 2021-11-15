@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/thef2e_bike/static/css/main.8c8b27cf.chunk.css",
+    "main.js": "/thef2e_bike/static/js/main.dc27f95b.chunk.js",
+    "main.js.map": "/thef2e_bike/static/js/main.dc27f95b.chunk.js.map",
+    "runtime-main.js": "/thef2e_bike/static/js/runtime-main.d6c4fbae.js",
+    "runtime-main.js.map": "/thef2e_bike/static/js/runtime-main.d6c4fbae.js.map",
+    "static/js/2.326cc089.chunk.js": "/thef2e_bike/static/js/2.326cc089.chunk.js",
+    "static/js/2.326cc089.chunk.js.map": "/thef2e_bike/static/js/2.326cc089.chunk.js.map",
+    "static/js/3.14a51fb5.chunk.js": "/thef2e_bike/static/js/3.14a51fb5.chunk.js",
+    "static/js/3.14a51fb5.chunk.js.map": "/thef2e_bike/static/js/3.14a51fb5.chunk.js.map",
+    "index.html": "/thef2e_bike/index.html",
+    "static/css/main.8c8b27cf.chunk.css.map": "/thef2e_bike/static/css/main.8c8b27cf.chunk.css.map",
+    "static/js/2.326cc089.chunk.js.LICENSE.txt": "/thef2e_bike/static/js/2.326cc089.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/thef2e_bike/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d6c4fbae.js",
+    "static/js/2.326cc089.chunk.js",
+    "static/css/main.8c8b27cf.chunk.css",
+    "static/js/main.dc27f95b.chunk.js"
+  ]
+}
