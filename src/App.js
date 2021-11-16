@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import { useState, useEffect } from 'react';
+import getData from './api/dataFetch';
 import './App.css';
+import Map from './components/Map/Map';
+import { placeList } from './data/places';
 
 function App() {
+  const [data, setData] = useState({})
+
+  useEffect(() => {
+    getData(`/v2/Bike/Station/${placeList[1][1]}?$format=JSON`)
+    .then(res => {
+      console.log(res)
+      setData(res)
+      //data = res;
+    })
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Map data={data}/>
     </div>
   );
 }
