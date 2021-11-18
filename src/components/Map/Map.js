@@ -1,14 +1,16 @@
 import "leaflet/dist/leaflet.css"
 import L from "leaflet"
-import { useEffect, useRef, useState} from 'react'
+import { useEffect, useRef } from 'react'
 import style from './Map.module.css'
-import getData from "../../api/dataFetch"
+// 引入 leaflet.markercluster
+import "leaflet.markercluster/dist/MarkerCluster.css"
+import "leaflet.markercluster/dist/MarkerCluster.Default.css"
+import "leaflet.markercluster";
 
 
 function Map(props) {
 	const data = props.data;
 	const mapContainer = useRef();
-	const [map, setMap] = useState();
 
 	useEffect(() => {
 		if (Object.keys(data).length === 0) return null;
@@ -32,10 +34,29 @@ function Map(props) {
 			shadowSize: [41, 41] 
 		}); 
 		
-		data.forEach(item => { 
-			L.marker([item.StationPosition.PositionLat, item.StationPosition.PositionLon], {icon: greenIcon}).addTo(map) 
-			.bindPopup(`<h1>${item.StationAddress.Zh_tw}</h1>`) 
-		}) 
+		var markers = L.markerClusterGroup();
+
+		// data.forEach(item => { 
+		// 	L.marker([item.StationPosition.PositionLat, item.StationPosition.PositionLon], {icon: greenIcon}).addTo(map) 
+		// 	.bindPopup(`<h1>${item.StationAddress.Zh_tw}</h1>`) 
+		// }) 
+
+		// data.forEach(item => {
+		// 	var m = L.marker(new L.LatLng([item.StationAddress.PositionLat, item.StationAddress.PositionLon]), {icon: greenIcon})
+		// 	.bindPopup(`<h1>${item.StationAddress.Zh_tw}</h1>`)
+
+		// 	markers.addLayer(m);
+		// })
+
+		data.map(item => L.marker([item.StationPosition.PositionLat, item.StationPosition.PositionLon], {icon: greenIcon})
+		.bindPopup(`<h1>${item.StationAddress.Zh_tw}</h1>`))
+		.forEach(item => markers.addLayer(item))
+
+		map.addLayer(markers)
+
+		           
+
+
 
 		// unmount map function 
 		return ()=> map.remove(); 

@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import getData from './api/dataFetch';
-import './App.css';
-import Map from './components/Map/Map';
+import style from './App.module.css';
 import { placeList } from './data/places';
+import Map from './components/Map/Map';
+import Header from './components/Header/Header'
 
 function App() {
   const [data, setData] = useState({})
@@ -17,7 +18,8 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
+    <div className={style.container}>
+      <Header style={style.header}></Header> 
       <Map data={data}/>
     </div>
   );
