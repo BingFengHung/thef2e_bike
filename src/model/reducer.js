@@ -5,17 +5,17 @@ const initState = {
 		"Like的文章",
 		"Like的留言"
 	],
-	place: ''
+	place: 'NewTaipei'
 };
 
 const itemReducer = (state = initState, action) => {
 	switch(action.type) {
 
 		case 'PlaceSelect': {
-			return { 
-				menuItemData: state.menuItemData,
-				place: action.payload.place 
-			}
+			const data = state;
+			data.place = action.payload.place
+
+			return data;
 		}
 
 		case 'ADD_ITEM': {

@@ -6,38 +6,25 @@ import Map from './components/Map/Map';
 import Header from './components/Header/Header'
 import EventBus from './utils/EventBus';
 import Test from './components/TestComponent/Test';
+import { useSelector } from 'react-redux';
 
 function App() {
-  const [data, setData] = useState('')
+  const [data, setData] = useState([])
+	const placeData = useSelector(state => state.place)
 
-  // EventBus.on('rentBike', (val) => {
-  //   // console.log('i')
-  //   // getData(`/v2/Bike/Station/${val}?$format=JSON`)
-  //   // .then(res => {
-  //   //   setData(res)
-  //   //   //data = res;
-  //   // })
-  //   console.log('in')
-  //   setData(val)
-  // })
-  
-
-  // useEffect(() => {
-  //     getData(`/v2/Bike/Station/${placeList[1][1]}?$format=JSON`)
-  //     .then(res => { 
-  //       setData(res) 
-  //     })
-
-  //   return () => {
-  //     EventBus.remove('rentBike')
-  //   }
-  // }, []);
+  useEffect(() => {
+      getData(`/v2/Bike/Station/${placeData}?$format=JSON`)
+      .then(res => {
+        console.log('in')
+        setData(res)
+      })
+  }, [placeData]);
 
   return (
     <div className={style.container}>
       <Header style={style.header}></Header> 
-      {/* <Map data={data}/> */}
-      <Test value={data}/>
+      <Map data={data}/>
+      {/* <Test value={data}/> */}
     </div>
   );
 }

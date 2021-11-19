@@ -6,14 +6,16 @@ import style from './Map.module.css'
 import "leaflet.markercluster/dist/MarkerCluster.css"
 import "leaflet.markercluster/dist/MarkerCluster.Default.css"
 import "leaflet.markercluster";
+import { useSelector } from "react-redux"
 
 
 function Map(props) {
 	const data = props.data;
 	const mapContainer = useRef();
 
+
 	useEffect(() => {
-		if (Object.keys(data).length === 0) return null;
+		if (data === null || data.length === 0) return null;
 		const map = L.map(mapContainer.current, {
 			center: [data[0].StationPosition.PositionLat, data[0].StationPosition.PositionLon], 
 			zoom: 16 
@@ -54,8 +56,6 @@ function Map(props) {
 		// unmount map function 
 		return ()=> map.remove(); 
 	}, [data]);
-
-	if (Object.keys(data).length === 0) return null;
 
 	return (
 		 <div className={style.container} 

@@ -5,6 +5,7 @@ function Test(props) {
 	const menuItemData = useSelector(state => state.menuItemData)
 	const placeData = useSelector(state => state.place)
 	console.log(menuItemData)
+	console.log(placeData)
 	return (
 		<div>
 			{props.value}
