@@ -41,13 +41,6 @@ function Map(props) {
 		// 	.bindPopup(`<h1>${item.StationAddress.Zh_tw}</h1>`) 
 		// }) 
 
-		// data.forEach(item => {
-		// 	var m = L.marker(new L.LatLng([item.StationAddress.PositionLat, item.StationAddress.PositionLon]), {icon: greenIcon})
-		// 	.bindPopup(`<h1>${item.StationAddress.Zh_tw}</h1>`)
-
-		// 	markers.addLayer(m);
-		// })
-
 		data.map(item => L.marker([item.StationPosition.PositionLat, item.StationPosition.PositionLon], {icon: greenIcon})
 		.bindPopup(`<h1>${item.StationAddress.Zh_tw}</h1>`))
 		.forEach(item => markers.addLayer(item))
