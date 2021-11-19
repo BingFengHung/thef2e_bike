@@ -8,3 +8,12 @@
 	margin: 10px; 
 	font-size: 1.5rem;
 }
+
+.selectContainer {
+	display: flex;
+}
+
+.items {
+	display: flex;
+	margin: 0 10px;
+}

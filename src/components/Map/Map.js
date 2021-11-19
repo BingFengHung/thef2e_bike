@@ -10,14 +10,15 @@ import { useSelector } from "react-redux"
 
 
 function Map(props) {
-	const data = props.data;
+	const available = props.bikeAvailable
+	const stations = props.bikeStations;
 	const mapContainer = useRef();
 
 
 	useEffect(() => {
-		if (data === null || data.length === 0) return null;
+		if (stations === null || stations.length === 0) return null;
 		const map = L.map(mapContainer.current, {
-			center: [data[0].StationPosition.PositionLat, data[0].StationPosition.PositionLon], 
+			center: [stations[0].StationPosition.PositionLat, stations[0].StationPosition.PositionLon], 
 			zoom: 16 
 		}); 
 		
@@ -38,13 +39,16 @@ function Map(props) {
 		
 		var markers = L.markerClusterGroup();
 
-		// data.forEach(item => { 
-		// 	L.marker([item.StationPosition.PositionLat, item.StationPosition.PositionLon], {icon: greenIcon}).addTo(map) 
-		// 	.bindPopup(`<h1>${item.StationAddress.Zh_tw}</h1>`) 
-		// }) 
-
-		data.map(item => L.marker([item.StationPosition.PositionLat, item.StationPosition.PositionLon], {icon: greenIcon})
-		.bindPopup(`<h1>${item.StationAddress.Zh_tw}</h1>`))
+		stations.map((item, idx) => L.marker([item.StationPosition.PositionLat, item.StationPosition.PositionLon], {icon: greenIcon})
+		.bindPopup(
+			`<div> 
+			<h1>${item.StationName.Zh_tw}</h1>
+			<p>${item.StationAddress.Zh_tw}</p>
+			<p>可租借數量${available[idx].AvailableRentBikes}</p>
+			<p>可歸還數量${available[idx].AvailableReturnBikes }</p>
+			</div>
+			`
+			))
 		.forEach(item => markers.addLayer(item))
 
 		map.addLayer(markers)
@@ -55,7 +59,7 @@ function Map(props) {
 
 		// unmount map function 
 		return ()=> map.remove(); 
-	}, [data]);
+	}, [stations]);
 
 	return (
 		 <div className={style.container} 
