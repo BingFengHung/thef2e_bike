@@ -1,0 +1,48 @@
+.container {
+	background-color: white;
+	margin: 5px 0;
+	padding: 6px;
+	border: 1px solid blue;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.header {
+	font-size: 1.5rem;
+}
+
+.station {
+	display: flex;
+	font-size: 1.2rem;
+	color: white;
+	margin: 5px 0;
+}
+
+.station p {
+	margin-right: 10px;
+	border-radius: 5px;
+	padding: 5px;
+}
+
+.station p:first-child {
+	background-color: blue;
+}
+
+.station p:nth-child(2) {
+	background-color: blue;
+	width: 100%;
+}
+
+.location	{
+	display: flex;
+	justify-content: space-between;
+	font-size: 1.1rem;
+}
+
+.location p {
+	margin: 0px 6px;
+}
+
+.location div {
+	display: flex;
+}

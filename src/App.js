@@ -7,10 +7,10 @@ import { useSelector } from 'react-redux';
 import RoadList from './components/RoadList/RoadList';
 
 function App() {
-  const [data, setData] = useState([])
   const [bikeStations, setBikeStations] = useState([])
   const [bikeAvailable, setBikeAvailable] = useState([])
 	const placeData = useSelector(state => state.place)
+  console.log(placeData)
 
   useEffect(() => {
     let stationData = null;
@@ -18,24 +18,20 @@ function App() {
     async function fetchData() {
       await getData(`/v2/Bike/Station/${placeData}?$format=JSON`)
       .then(res => {
-        // setData(res)
-        console.log('A')
         stationData = res;
       })
 
       await getData(`v2/Bike/Availability/${placeData}?$format=JSON`)
       .then(res =>{
-        console.log('B')
         bikeAvailableData = res
       })
 
-      console.log(stationData.length, bikeAvailableData.length)
-      if (stationData.length === bikeAvailableData.length) {
+      if (stationData && stationData.length === bikeAvailableData.length) {
         setBikeAvailable(bikeAvailableData)
         setBikeStations(stationData)
       }
       else {
-        alert('Not compare')
+        // alert('Not compare')
       }
     }
 

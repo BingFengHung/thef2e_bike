@@ -9,8 +9,9 @@ import { useSelector } from 'react-redux';
 function RoadList({props}) {
 	const [isOpen, setIsOpen] = useState(false)
 	const [display, setDisplay] = useState(style.container_close)
-	const placeData = useSelector(state => state.place)
 	const [roadList, setRoadList] = useState([])
+	const placeData = useSelector(state => state.road)
+	console.log(placeData, 'adsfafd')
 
 	function menuOpen() {
 		if (isOpen) {
@@ -25,13 +26,10 @@ function RoadList({props}) {
 	useEffect(() => {
 		getData(`/v2/Cycling/Shape/${placeData}?format=JSON`)
 		.then(res => {
-			console.log('in id')
 			const data = res.map((i, idx) => <Road key={idx} data={i}/>)
-			console.log(data)
-
 			setRoadList(data)
 		})
-	}, [])
+	}, [placeData])
 
 	return (
 		<div className={style.container + ' ' + (display)}>
@@ -41,7 +39,6 @@ function RoadList({props}) {
 				</button> 
 
 				<div className={style.menu_list}>
-					<p>This is Bike Road Site</p>
 					<div className={style.roadContainer}>
 						{roadList}
 					</div>

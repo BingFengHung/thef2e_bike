@@ -20,7 +20,14 @@ const Header = (props) => {
 
 		dispatch({
 			type: 'PlaceSelect',
-			payload: {place: e.target.value}
+			payload: { place: e.target.value }
+		})
+	}
+
+	function handleRoadSelect(e) {
+		dispatch({
+			type: 'RoadPlace',
+			payload: {road: e.target.value}
 		})
 	}
 
@@ -42,7 +49,7 @@ const Header = (props) => {
 				
 				<div className={style.items}>
 					<p>自行車道：</p>
-					<select>
+					<select onChange={handleRoadSelect}>
 						<option disabled selected value>請選擇車道</option>
 						{roadOptions}
 					</select>

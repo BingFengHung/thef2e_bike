@@ -6,7 +6,6 @@ import style from './Map.module.css'
 import "leaflet.markercluster/dist/MarkerCluster.css"
 import "leaflet.markercluster/dist/MarkerCluster.Default.css"
 import "leaflet.markercluster";
-import { useSelector } from "react-redux"
 
 
 function Map(props) {
