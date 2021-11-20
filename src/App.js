@@ -4,6 +4,7 @@ import style from './App.module.css';
 import Map from './components/Map/Map';
 import Header from './components/Header/Header'
 import { useSelector } from 'react-redux';
+import RoadList from './components/RoadList/RoadList';
 
 function App() {
   const [data, setData] = useState([])
@@ -45,7 +46,7 @@ function App() {
     <div className={style.container}>
       <Header style={style.header}></Header> 
       <Map bikeAvailable={bikeAvailable} bikeStations={bikeStations}/>
-      {/* <Test value={data}/> */}
+      <RoadList/>
     </div>
   );
 }

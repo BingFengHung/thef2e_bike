@@ -1,0 +1,50 @@
+.container {
+	height: calc(100% - 80px);
+	position: fixed;
+	right: 0px;
+	bottom: 0px;
+	background-color: green;
+	z-index: 999;
+	border-radius: 5px;
+	width: 50%;
+	transition: all .3s ease;
+	animation: close 2s;
+}
+
+.container_open {
+	right: 0px;
+}
+
+.container_close {
+	right: -50%;
+}
+
+.wrapper { 
+	display: flex;
+	height: 100%;
+}
+
+.wrapper .menu {
+	display: block;
+	position: absolute;
+	top: 25%;
+	left: -40px;
+	border: 1px solid black;
+	outline: none;
+	padding: 10px;
+	font-size: 25px;
+	cursor: pointer;
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+}
+
+.wrapper .menu_list {
+	background-color: blue;
+	height: 100%;
+	width: 100%;
+}
+
+.wrapper .roadContainer {
+	overflow-y: scroll;
+	height: calc(100% - 80px);
+}

@@ -1,6 +1,9 @@
 import style from './Header.module.css'
 import { bikeStations, bikeRoads } from '../../data/places';
 import { useDispatch } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faBiking } from '@fortawesome/free-solid-svg-icons';
+
 
 const Header = (props) => {
 	const stationsOptions = bikeStations.map((i, idx) => <option key={idx} value={i[1]}>{i[0]}</option>)
@@ -23,14 +26,16 @@ const Header = (props) => {
 
 	return (
 		<div className={style.container + " " +(props.style)}>
-			<p className={style.logo}>Go Bike</p>
-
+			<div className={style.logo}>
+				<FontAwesomeIcon className={style.icon} icon={faBiking}/>
+				<p>Go Bike</p>
+			</div>
 			<div>
 				<div className={style.selectContainer}> 
 				<div className={style.items}>
-					<p>Bike Station：</p> 
+					<p>租車還車站點：</p> 
 					<select onChange={handleChange}>
-						<option disabled selected value>租車/還車</option>
+						<option disabled selected value>請選擇站點</option>
 						{stationsOptions}
 					</select> 
 				</div>
@@ -38,7 +43,7 @@ const Header = (props) => {
 				<div className={style.items}>
 					<p>自行車道：</p>
 					<select>
-						<option disabled selected value>自行車道</option>
+						<option disabled selected value>請選擇車道</option>
 						{roadOptions}
 					</select>
 					</div>

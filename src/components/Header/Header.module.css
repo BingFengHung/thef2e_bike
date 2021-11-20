@@ -7,6 +7,12 @@
 .logo {
 	margin: 10px; 
 	font-size: 1.5rem;
+	display: flex;
+	font-weight: bold;
+}
+
+.logo .icon {
+	margin-right: 10px;
 }
 
 .selectContainer {
