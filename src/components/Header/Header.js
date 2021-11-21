@@ -13,10 +13,10 @@ const Header = (props) => {
 
 	function handleChange(e) {
 		// EventBus.dispatch('rentBike', e.target.value);
-		dispatch({ 
-			type: 'ADD_ITEM', 
-			payload: {itemNew: e.target.value}	
-		});
+		// dispatch({ 
+		// 	type: 'ADD_ITEM', 
+		// 	payload: {itemNew: e.target.value}	
+		// });
 
 		dispatch({
 			type: 'PlaceSelect',
