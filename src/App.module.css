@@ -6,3 +6,23 @@
 .header {
   height: 80px;
 }
+
+.map {
+  height: calc(100vh - 80px);
+}
+
+.station_dispaly {
+  visibility: visible;
+}
+
+.station_not_display {
+  visibility: collapse;
+}
+
+.road_display {
+  visibility: visible;
+}
+
+.road_not_display {
+  visibility: collapse;
+}

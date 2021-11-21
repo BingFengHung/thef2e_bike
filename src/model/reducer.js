@@ -6,17 +6,17 @@ const initState = {
 	// 	"Like的留言"
 	// ],
 	place: 'NewTaipei',
-	road: 'NewTaipei'
+	road: 'NewTaipei',
+	roadSelect: null,
+	stationOrRoad: 'station'
 };
 
 const itemReducer = (state = initState, action) => {
-	console.log(state)
 	switch(action.type) {
 		case 'PlaceSelect': {
 			const data = Object.assign({}, state);
-			// console.log(state)
-			// const data = state;
 			data.place = action.payload.place
+			data.stationOrRoad = 'station';
 			return data;
 		}
 
@@ -24,6 +24,14 @@ const itemReducer = (state = initState, action) => {
 			const data = Object.assign({}, state);
 			// const data = state;
 			data.road = action.payload.road
+			data.stationOrRoad = 'road';
+			return data;
+		}
+
+		case 'RoadSelect': {
+			const data = Object.assign({}, state);
+			data.roadSelect = action.payload.roadSelect
+			data.stationOrRoad = 'road';
 			return data;
 		}
 

@@ -2,10 +2,19 @@ import { Fragment } from "react";
 import style from './Road.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { useDispatch } from "react-redux";
 
 const Road = ({data}) => {
+	const dispatch = useDispatch();
+	function handleRoadClick() {
+		dispatch({
+			type: 'RoadSelect',
+			payload: { roadSelect: data }
+		})
+	}
+
 	return (
-		<div className={style.container}>
+		<div className={style.container} onClick={handleRoadClick}>
 			<p className={style.header}>{data.RouteName}</p>
 
 			<Fragment>
