@@ -11,7 +11,6 @@ function RoadList({props}) {
 	const [display, setDisplay] = useState(style.container_close)
 	const [roadList, setRoadList] = useState([])
 	const placeData = useSelector(state => state.road)
-	console.log(placeData, 'adsfafd')
 
 	function menuOpen() {
 		if (isOpen) {

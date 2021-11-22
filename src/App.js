@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import getData from './api/dataFetch';
 import style from './App.module.css';
 import Map from './components/Map/Map';
+import Maps from './components/Maps/Maps';
 import MapRoute from './components/MapRoute/MapRoute';
-import Maps from './components/Maps/Maps'
+
 import Header from './components/Header/Header'
 import { useSelector } from 'react-redux';
 import RoadList from './components/RoadList/RoadList';
@@ -16,14 +17,15 @@ function App() {
   const stationOrRoad = useSelector(state => state.stationOrRoad)
   const [stationDisplay, setStationDisplay] = useState(null)
   const [roadDisplay, setRoadDisplay] = useState(null)
-  // console.log(stationOrRoad)
+  const [routeDatas, setRouteDatas] = useState(null);
+  
 
   useEffect(() => {
     if (stationOrRoad === 'station') {
       setStationDisplay(style.station_dispaly) 
       setRoadDisplay(style.road_not_display)
-      let stationData = null;
-    let bikeAvailableData = null;
+      let stationData = null; 
+      let bikeAvailableData = null;
 
     async function fetchData() {
       await getData(`/v2/Bike/Station/${placeData}?$format=JSON`)
@@ -49,6 +51,7 @@ function App() {
     } else {
       setStationDisplay(style.station_not_display) 
       setRoadDisplay(style.road_display)
+      setRouteDatas(routeData)
     }
 
   }, [placeData, routeData]);
@@ -57,18 +60,17 @@ function App() {
     <div className={style.container}>
       <Header style={style.header}></Header> 
       {/* <div className={style.map + ' ' + stationOrRoad === 'station' ? style.station_display: ''}>  */}
-      {/* <div className={style.map + ' ' + (stationDisplay)}> */}
-        <Maps bikeAvailable={bikeAvailable} bikeStations={bikeStations}/>
-      {/* </div> */}
+      {/* <div className={style.map + ' ' + (stationDisplay)}>
+        <Map bikeAvailable={bikeAvailable} bikeStations={bikeStations}/>
+      </div> */}
 
-      {/* <div className={style.map + " " + (roadDisplay) }> */}
+      {/* <div className={style.map + " " + (roadDisplay) }>
 
-{/* <div className={style.map}> */}
 
-        {/* <MapRoute route={routeData}/> */}
+        <MapRoute route={routeData}/>
 
-{/* </div> */}
-      {/* </div> */}
+</div> */} 
+      <Maps bikeAvailable={bikeAvailable} bikeStations={bikeStations} select={routeDatas}/>
       <RoadList/>
     </div>
   );

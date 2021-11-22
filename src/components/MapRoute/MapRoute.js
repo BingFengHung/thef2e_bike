@@ -9,7 +9,6 @@ const MapRoute = ({ route }) => {
 
 	useEffect(() => {
 		if (route === null) return null;
-
 		const routes = route.Geometry.replace("MULTILINESTRING ", '').replace('((', '').replace('))', '').trim();
 
 		const path = routes.split(',').map(i => 

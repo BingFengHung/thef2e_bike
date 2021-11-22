@@ -22,7 +22,6 @@ function getAuthorizationHeader() {
 
 async function getData(query) {
 	try {
-    console.log('hi', query)
 		axios.defaults.baseURL = 'https://ptx.transportdata.tw/MOTC'
 		axios.defaults.headers = getAuthorizationHeader();
 		let res = await axios.get(query) 
